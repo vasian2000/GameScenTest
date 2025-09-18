@@ -1,0 +1,52 @@
+@if !hasCrystal set hasCrystal=False
+@if !crystalResolved set crystalResolved=False
+
+# GirlStart1
+@char C visible:false
+@back Snow
+@char S
+@char Girl visible:true
+S: You brought the crystal?
+@wait 0.5
+
+
+@choice "Give crystal" goto:.GiveCrystal if:hasCrystal=="True"
+@choice "Keep it" goto:.KeepCrystal if:hasCrystal=="True"
+@choice Leave
+@stop
+
+# Leave
+@char S.7
+S: Okay bay bayyy.
+@endDialogCanvas
+@wait 0.5
+@loadScene One
+@stop
+
+# GiveCrystal
+@set hasCrystal=False
+@set crystalResolved=True
+@set crystalOwner=1
+@hideChars
+@char S.Good
+S: Thank you so much! You are the best!
+@wait 1
+@char Girl visible:false
+@hidePrinter 
+@endDialogCanvas
+@loadScene One
+@stop
+
+
+# KeepCrystal
+@set crystalResolved=True
+@char S.Hell look:left pos:45,10
+S: Hmph… you're such a meanie! *grumbles*
+@wait 1
+@hideBack
+@hideChars
+@hidePrinter 
+@endDialogCanvas
+@loadScene One
+@stop
+

@@ -1,0 +1,50 @@
+@if !hasCrystal set hasCrystal=False
+@if !crystalResolved set crystalResolved=False
+
+# GirlStart
+
+@char S visible:false
+@back Snow
+@char C
+C: You brought the crystal?
+@wait 0.5
+
+
+@choice "Give crystal" if:hasCrystal=="True" goto:.GiveCrystal
+@choice "Keep it" if:hasCrystal=="True" goto:.KeepCrystal
+@choice "Leave" expr:Script.GetUnityObject("NaniDialogNoMenu").GetComponent("NaniDialogNoMenu").EndDialog()goto:.Leave
+@stop
+
+# Leave
+@char C.Idle
+C: Okay bay bayyy.
+@endDialogCanvas
+@wait 0.5
+@loadScene One
+@stop
+
+# GiveCrystal
+@set hasCrystal=False
+@set crystalResolved=True
+@set crystalOwner=1
+@hideChars
+@char C.Good
+C: Thank you so much! You are the best!
+@wait 1
+@hidePrinter
+@endDialogCanvas
+@loadScene One
+@stop
+
+# KeepCrystal
+@set crystalResolved=True
+@char C.Hell
+C: Hmph… you're such a meanie! *grumbles*
+@wait 1
+@hideBack
+@hideChars
+@hidePrinter
+@endDialogCanvas
+@loadScene One
+@stop 
+

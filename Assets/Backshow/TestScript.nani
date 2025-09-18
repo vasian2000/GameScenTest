@@ -1,0 +1,31 @@
+@back Snow
+
+@char C
+C: Hello there!|#1|
+C: What is your name?|#2|
+
+@input playerName summary:"Enter your name|#3|"
+@stop
+C: Nice to meet you, |#4|{playerName}!|#5|
+@shake C
+
+@char S
+S: Hah, |#6|{playerName}, you already look nervous.|#7|
+S: Dont you know what happens here in the snow?|#8|
+S: People like you usually dont last long...|#9|
+
+@char C
+C: Stop scaring them, Sanacha-chan.|#a|
+C: We need |#b|{playerName} to be ready.|#c|
+C: After all, the challenge is about to begin.|#d|
+
+@char S
+S: Challenge? Ha! Its more like survival.|#e|
+S: Lets see if |#f|{playerName} can handle it...|#10|
+
+@char C
+C: Enough talk. Lets go.|#11|
+
+@loadScene MiniGame
+@resetState
+@stop
